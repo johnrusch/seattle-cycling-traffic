@@ -243,7 +243,12 @@ function renderBikeTrailData(data) {
     const trailDistance = data["data"]["attributes"]["distance"]
     const trailType = data["data"]["attributes"]["trail_type"]
     const trailCard = document.createElement("div")
-    trailCard.id = ``
+    const trailProblemBtn = document.createElement('button')
+    trailProblemBtn.innerText = "Report a Problem"
+    trailProblemBtn.addEventListener('click', () => {
+        document.location.href = 'https://seattle-csrprodcwi.motorolasolutions.com/Home.mvc/Index'
+    })
+    trailCard.id = "report-problem"
     // trailCard.className = "card"
     trailCard.id = `card-${data["data"]["id"]}`
     const innerTrailInfo = document.createElement("div")
@@ -260,7 +265,7 @@ function renderBikeTrailData(data) {
     trailInfoType.className = "col-sm-6"
     trailInfoType.innerText = `Type ${trailType}`
     trailCard.style.display = "none"
-    innerTrailInfo.append(trailInfoDistance, trailInfoType)
+    innerTrailInfo.append(trailInfoDistance, trailInfoType, trailProblemBtn)
     trailCard.appendChild(trailHeader)
     trailCard.appendChild(innerTrailInfo)
     trailInfo.appendChild(trailCard)
