@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seattle Bike Traffic</title>
-    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link rel="stylesheet" type="text/css" href="simplex.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -19,101 +19,87 @@
 </head>
 <body>
 
-    <div class="container-fluid">
+
+    <nav class="navbar navbar-fixed-top bg-primary";>
+        <div class="container-fluid">
+            <!-- <div class="row"> -->
+                <div class="col-sm-3">
+                    <h2>Weather</h2>
+                </div>
+                <div class="col-sm-3">
+                    <div id="description"></div>
+                </div>
+                <div class="col-sm-3">
+                    <h1 id="temp"></h1>
+                </div>
+                <div class="col-sm-3">
+                    <div id="location"></div>
+                </div>
+            <!-- </div> -->
+        </div>
+    </nav>
+
+    <div class="container-fluid content" style="margin-top: 75px; margin-bottom: 80px;">
+
         <div class="col-md-6" style="height:900px;" >
             <div id="mapid"></div>
         </div>
-        <div class="col-md-6" style="height:500px;text-align: center;">
-          <div class="row card" style="height:30%;" id="weather">
-                <h2>Weather</h2>
-                <div id="description"></div>
-                <h1 id="temp"></h1>
-                <div id="location"></div>
-          </div>
-          <div class="row card" style="height:30%;" id="trail-info">
+
+        <div class="col col-md-6" style="height:500px;text-align: center;">
+          <div class="row card" style="height:50%;display: flexbox" id="trail-info">
         
           </div>
-            <div class="row card" style="height:300px;"  id="trail-data">
-                <div class="col-md-12">
-
+            <div class="row card" style="height:300px;" id="trail-data">
+                <div class="col-md-12" style="display: none">
+                    Total Event : <input id="eventCount" type="text" value="0" readonly>   
+	                Event Trigger : <input id="triggerLog" type="text" value="so far no events" readonly />
+            
                   <!-- <h2>Trail Data</h2> -->
                   
                 </div>
             </div>
 
-            <div class="row card" style="height:50%;" id="messages">
+            <div class="row card" style="height:50%; margin-bottom: 40px;" id="messages">
                 <div class="col-md-12">
-                  <h2>Messages</h2>
-                  <form class="message-form">
-                    <input id = "0" type="hidden"/>
-                    <input 
-                        class = "user_name-input"
-                        type="text"
-                        name="user_name"
-                        placeholder="Enter your name"
-                        />
-                    <input 
-                        class="message-input"
-                        type="text"
-                        name="content"
-                        placeholder="Add a message..."
-                        />
-                    <button class="message-button" type="submit">Post</button>
+                    <h2>Messages</h2>
+                    <form class="message-form form-inline justify-content-center";>
+                        <div class="form-group">
+                            <input id = "0" type="hidden"/>
+                            <input 
+                                class = "user_name-input form-control"
+                                type="text"
+                                name="user_name"
+                                placeholder="Enter your name"
+                                />
+                            <input 
+                                class="message-input form-control"
+                                type="text"
+                                name="content"
+                                placeholder="Add a message..."
+                                />
+                            <button class="message-button btn btn-primary" type="submit" id="message-button">Post</button>
+                        </div>
                     </form>
 
                         <!-- CREATE THIS FOR EACH COMMENT -->
                     <div class="card-block scroll"></div>
                 </div>
             </div>
-
-
         </div>
     </div>
     
     
-    
-    
-    <!-- ANDY: adds comment section-->
-    <!-- <div class="message-container">
-        <div class="messages-tabs">
-            <ul>
-                
-            </ul>
-        </div>
-        <div class="messages-section">
-            <ul class="messages"></ul>
-            <!-- <form class="message-form">
-                <input id = "0" type="hidden"/>
-                <input 
-                class = "user_name-input"
-                type="text"
-                name="user_name"
-                placeholder="Enter your name"
-                />
-                <input 
-                class="message-input"
-                type="text"
-                name="content"
-                placeholder="Add a message..."
-                />
-                <button class="message-button" type="submit">Post</button>
-            </form> -->
-        </div>
-    </div> -->
-    
     <!-- NAVBAR FOOTER -->
-    <nav class="navbar navbar-inverse navbar-fixed-bottom" style="background-color: grey;">
+    <nav class="navbar navbar-inverse navbar-fixed-bottom bg-primary">
         <div class="container-fluid">
           <div class="navbar-header">
-            <a class="navbar-brand" href="#">Seattle Bike Traffic</a>
+            <a class="navbar-brand">Seattle Bike Traffic</a>
           </div>
-          <ul class="nav navbar-nav">
+          <ul class="nav navbar-nav dropup">
             <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Bike Path
+              <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Bike Path
               <span class="caret"></span></a>
-              <ul class="dropdown-menu" id="path-selector">
-                <!-- <li><a href="#">W. Seattle Bridge/Alki Trail</a></li> -->
-                
+              <ul class="dropdown-menu" id="path-selector" aria-haspopup="true" aria-expanded="false">
                 
               </ul>
             </li>
