@@ -310,6 +310,11 @@ function renderBikeTrailData(data) {
 
     // let marker = L.marker([longitude, latitude]).addTo(mymap)
     // marker.bindPopup("<b>Hello world!</b><br>I am a popup.");
+
+
+
+
+
 }
 // make it identifiable so that when you select a trail it can appear
 
